@@ -1,0 +1,159 @@
+/* ═══════════════════════════════════════════════════════════════
+   TrasmutaXML — Convertitore XML → JSON
+   Design: "Orafo Digitale" — ispirato all'artigianato di precisione
+   Palette: ametista + ciano su base pergamena calda
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+/* ── CSS Custom Properties (Design Tokens) ── */
+:root {
+  /* Palette */
+  --primary: #6C3C9B;         /* Ametista — azioni principali, interattività */
+  --primary-dark: #55307D;     /* Ametista scura — hover states */
+  --primary-alpha: rgba(108, 60, 155, 0.08); /* Ametista trasparente — sfondi sottili */
+  --secondary: #0EA5C6;        /* Ciano — info, links, secondario */
+  --secondary-alpha: rgba(14, 165, 198, 0.08);
+  --tertiary: #D97706;         /* Ambra — numeri, valori */
+  --tertiary-alpha: rgba(217, 119, 6, 0.08);
+  --accent: #E8614C;           /* Corallo — errori, warning, attenzione */
+  --accent-dark: #C53030;
+  --accent-alpha: rgba(232, 97, 76, 0.08);
+  --success: #059669;          /* Smeraldo — conferme, successo */
+  --success-alpha: rgba(5, 150, 105, 0.08);
+
+  /* Superfici */
+  --bg: #FAF9F7;               /* Pergamena calda — sfondo pagina */
+  --surface: #FFFFFF;           /* Bianco — card, pannelli */
+  --surface-alt: #F5F2ED;      /* Pergamena più scura — header, hover */
+
+  /* Testo */
+  --text: #2D2320;             /* Marrone scuro caldo — testo primario */
+  --text-secondary: #6B5E58;   /* Marrone medio — testo secondario */
+  --text-tertiary: #9B8E87;    /* Marrone chiaro — placeholder, hint */
+
+  /* Bordi */
+  --border: #E0DBD5;           /* Beige — bordi standard */
+  --border-dark: #C5BFB6;      /* Beige scuro — bordi attivi */
+
+  /* Feedback */
+  --error-bg: rgba(232, 97, 76, 0.06);
+
+  /* Tipografia */
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
+
+  /* Scala tipografica */
+  --text-xs: 0.6875rem;    /* 11px */
+  --text-sm: 0.8125rem;    /* 13px */
+  --text-base: 0.9375rem;  /* 15px */
+  --text-md: 1.0625rem;    /* 17px */
+  --text-lg: 1.25rem;      /* 20px */
+  --text-xl: 1.5rem;       /* 24px */
+
+  /* Spacing grid (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px rgba(45, 35, 32, 0.04);
+  --shadow-md: 0 2px 8px rgba(45, 35, 32, 0.06);
+}
+
+/* ── Reset & Base ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Focus ring globale ── */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ── Scrollbar styling ── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-alt);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ── Selection ── */
+::selection {
+  background: var(--primary-alpha);
+  color: var(--primary-dark);
+}
+
+/* ── Utility: screen-reader only ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

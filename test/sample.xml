@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libreria>
+  <libro id="1" genere="fantasy">
+    <titolo>Il Signore degli Anelli</titolo>
+    <autore>
+      <nome>J.R.R.</nome>
+      <cognome>Tolkien</cognome>
+    </autore>
+    <anno>1954</anno>
+    <prezzo valuta="EUR">24.99</prezzo>
+    <disponibile>true</disponibile>
+    <capitoli>
+      <capitolo numero="1">
+        <titolo>Capitolo Uno</titolo>
+        <pagine>45</pagine>
+      </capitolo>
+      <capitolo numero="2">
+        <titolo>Capitolo Due</titolo>
+        <pagine>62</pagine>
+      </capitolo>
+    </capitoli>
+  </libro>
+  <libro id="2" genere="fantascienza">
+    <titolo>Dune</titolo>
+    <autore>
+      <nome>Frank</nome>
+      <cognome>Herbert</cognome>
+    </autore>
+    <anno>1965</anno>
+    <prezzo valuta="EUR">19.99</prezzo>
+    <disponibile>false</disponibile>
+    <capitoli>
+      <capitolo numero="1">
+        <titolo>Capitolo Uno</titolo>
+        <pagine>38</pagine>
+      </capitolo>
+    </capitoli>
+  </libro>
+</libreria>
