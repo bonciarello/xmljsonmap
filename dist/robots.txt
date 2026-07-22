@@ -1,3 +1,2 @@
 User-agent: *
 Allow: /
-Sitemap: https://cristianporco.it/app/convertitore-di-file-xml-in-json-con-mappatura-personalizzata-dei-nodi/sitemap.xml
